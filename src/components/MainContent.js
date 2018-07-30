@@ -4,7 +4,7 @@ import { Divider, withStyles, Paper, Grid } from '@material-ui/core';
 import GroupHeader from './GroupHeader';
 import FixturesContainer from './FixturesContainer';
 import TeamList from './TeamList';
-import withMainContent from '../enhancers/WithMainContent';
+import withMainContent from '../enhancers/withMainContent';
 
 /**
  * TODO: add comments.
