@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
-import Content from './Content';
+import React from 'react';
+import MainContent from './components/MainContent';
 
-class App extends Component {
-  render() {
-    return (     
-        <Content />
-    );
-  }
-}
+const App = () => (
+  <MainContent />
+);
 
 export default App;
