@@ -1,23 +1,47 @@
 import React from 'react';
-import { Typography, Input, Button } from '@material-ui/core';
+import { Typography, Input, Button, withStyles } from '@material-ui/core';
 
-const GroupHeader = ({ team, handleChangeTeamValue, handleAddNewTeamMember }) => (
-    <div id="group-header" style={{ overflowX: 'hidden', paddingBottom: 10 }}>
-        <Typography component='div' variant="title" style={{ display: 'inline' }}>Generador de grupos</Typography>
+const GroupHeader = ({ team, handleChangeTeamValue, handleAddNewTeamMember, canAggregateTeams, classes }) => (
+  <div id="group-header" className={classes.container}>
+    <Typography variant="title" className={classes.displayInline}>
+      Generador de grupos
+    </Typography>
 
-        <span style={{ float: 'right' }} >
-            <Input type="text" value={team} onChange={handleChangeTeamValue} placeholder="Nombre de equipo" />
+    <span className={classes.alignRight}>
+      <Input
+        type="text"
+        autoFocus
+        value={team}
+        onChange={handleChangeTeamValue}
+        placeholder="Equipo" />
 
-            <Button
-                style={{ marginLeft: 10 }}
-                size="small"
-                variant="contained"
-                color="primary"
-                onClick={handleAddNewTeamMember}>
-                Agregar
-            </Button>
-        </span>
-    </div>
+      <Button
+        className={classes.unitMarginLeft}
+        size="small"
+        variant="contained"
+        color="primary"
+        onClick={handleAddNewTeamMember}
+        disabled={!canAggregateTeams}>
+        Agregar
+      </Button>
+    </span>
+  </div>
 );
 
-export default GroupHeader;
+const styles = ({ spacing }) => ({
+  container: {
+    overflowX: 'hidden',
+    paddingBottom: spacing.unit
+  },
+  unitMarginLeft: {
+    marginLeft: spacing.unit
+  },
+  displayInline: {
+    display: 'inline'
+  },
+  alignRight: {
+    float: 'right'
+  }
+});
+
+export default withStyles(styles)(GroupHeader);

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Typography, Button, List } from '@material-ui/core';
+import { Typography, Button, List, withStyles } from '@material-ui/core';
 import FixtureRound from './FixtureRound';
 
-const FixturesContainer = ({ teams, fixtures, handleGenerateFixture }) => (
+const FixturesContainer = ({ teams, fixtures, handleGenerateFixture, classes }) => (
   <div>
-    <Typography style={{ display: 'inline' }} variant="title">Partidos</Typography>
+    <Typography className={classes.displayInline} variant="title">Partidos</Typography>
     <Button
       size="small"
-      style={{ float: 'right', marginRight: 10 }}
-      disabled={teams.length < 4 || teams.length % 2 !== 0}
+      className={classes.alignRight}
+      disabled={teams.length < 4 || teams.length % 2 !== 0} /* refactor to a method */
       variant="contained"
       color="primary"
       onClick={handleGenerateFixture}>
@@ -18,7 +18,7 @@ const FixturesContainer = ({ teams, fixtures, handleGenerateFixture }) => (
     <List>
       {fixtures &&
         fixtures.map((fixtureRound, roundIndex) => (
-          <div key={roundIndex}>
+          <div key={roundIndex} /* refactor: avoid using index for key*/ >
             <FixtureRound fixtureRound={fixtureRound} roundIndex={roundIndex} />
           </div>
         ))
@@ -27,4 +27,14 @@ const FixturesContainer = ({ teams, fixtures, handleGenerateFixture }) => (
   </div>
 );
 
-export default FixturesContainer;
+const styles = ({spacing}) => ({
+  displayInline: { 
+    display: 'inline' 
+  },
+  alignRight: { 
+    float: 'right', 
+    marginRight: spacing.unit 
+  }
+});
+
+export default withStyles(styles)(FixturesContainer);

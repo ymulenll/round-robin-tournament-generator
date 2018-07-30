@@ -1,22 +1,22 @@
 import React from 'react';
-import { Typography, Button, List } from '@material-ui/core';
+import { Typography, List, IconButton } from '@material-ui/core';
 import { Delete as DeleteIcon } from '@material-ui/icons';
 import TeamItem from './TeamItem';
 
 const TeamList = ({ selectedTeamIndex, teams, handleDeleteTeam, handleChangeSelectedTeamIndex }) => (
-  <div style={{padding: 10}}>
-    <Typography variant="body2">
-      Teams
-      <Button disabled={selectedTeamIndex === null} onClick={handleDeleteTeam}>
+  <div>
+    <Typography variant="title" align="center">
+      Teams&nbsp;&nbsp;
+        <IconButton disabled={selectedTeamIndex === null} onClick={handleDeleteTeam}>
         <DeleteIcon />
-      </Button>
+      </IconButton>
     </Typography>
 
     <List>
       {
         teams.map((team, index) => (
           <TeamItem
-            key={index}
+            key={index} /* refactor: avoid using index for key*/
             team={team}
             index={index}
             selectedTeamIndex={selectedTeamIndex}
