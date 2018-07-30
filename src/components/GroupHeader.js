@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Input, Button, withStyles } from '@material-ui/core';
 
-const GroupHeader = ({ team, handleChangeTeamValue, handleAddNewTeamMember, canAggregateTeams, classes }) => (
+const GroupHeader = ({ teamInputRef, team, handleChangeTeamValue, handleAddNewTeamMember, canAggregateTeams, classes }) => (
   <div id="group-header" className={classes.container}>
     <Typography variant="title" className={classes.displayInline}>
       Generador de grupos
@@ -9,6 +9,7 @@ const GroupHeader = ({ team, handleChangeTeamValue, handleAddNewTeamMember, canA
 
     <span className={classes.alignRight}>
       <Input
+        inputRef={teamInputRef}
         type="text"
         autoFocus
         value={team}

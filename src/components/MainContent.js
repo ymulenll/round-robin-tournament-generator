@@ -4,7 +4,7 @@ import { Divider, withStyles, Paper, Grid } from '@material-ui/core';
 import GroupHeader from './GroupHeader';
 import FixturesContainer from './FixturesContainer';
 import TeamList from './TeamList';
-import withMainContent from '../enhancers/withMainContent';
+import withMainContentStateHandlers from '../enhancers/withMainContentStateHandlers';
 
 /**
  * TODO: add comments.
@@ -15,6 +15,7 @@ const MainContent = ({
   teams,
   fixtures,
   selectedTeamIndex,
+  teamInputRef,
   handleChangeTeamValue,
   handleAddNewTeamMember,
   handleGenerateFixture,
@@ -23,6 +24,7 @@ const MainContent = ({
 }) => (
     <Paper className={classes.root}>
       <GroupHeader
+        teamInputRef={teamInputRef}
         team={team}
         handleChangeTeamValue={handleChangeTeamValue}
         handleAddNewTeamMember={handleAddNewTeamMember}
@@ -31,14 +33,14 @@ const MainContent = ({
       <Divider />
 
       <Grid container className={classes.gridPadding}>
-        <Grid item id="fixtures" xs={9}>
+        <Grid item id="fixtures" xs={8}>
           <FixturesContainer
             teams={teams}
             fixtures={fixtures}
             handleGenerateFixture={handleGenerateFixture} />
         </Grid>
 
-        <Grid item id="teams" xs={3} className={classes.borderLeft}>
+        <Grid item id="teams" xs={4} className={classes.borderLeft}>
           <TeamList
             selectedTeamIndex={selectedTeamIndex}
             teams={teams}
@@ -57,7 +59,8 @@ const styles = ({spacing}) => ({
   },
   borderLeft: {
     borderLeft: '1px solid grey',
-    minHeight: 400
+    minHeight: 400,
+    paddingLeft: spacing.unit
   },
   gridPadding: {
     padding: spacing.unit
@@ -66,5 +69,5 @@ const styles = ({spacing}) => ({
 
 export default compose(
   withStyles(styles),
-  withMainContent
+  withMainContentStateHandlers
 )(MainContent);

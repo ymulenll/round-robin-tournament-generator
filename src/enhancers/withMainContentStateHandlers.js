@@ -1,3 +1,4 @@
+import React from 'react';
 import withStateHandlers from "recompose/withStateHandlers";
 import robin from 'roundrobin';
 
@@ -7,7 +8,8 @@ export default withStateHandlers(
     // teams: ['Peñarol', 'Nacional', 'Racing', 'Danuvio', 'River', 'Defensor', 'Cerro', 'Liverpool'],
     team: '',
     fixtures: null,
-    selectedTeamIndex: null
+    selectedTeamIndex: null,
+    teamInputRef: React.createRef()
   },
   {
     handleChangeTeamValue: () => (event) => (
@@ -22,7 +24,9 @@ export default withStateHandlers(
       return { fixtures };
     },
 
-    handleAddNewTeamMember: ({ teams, team }) => () => {
+    handleAddNewTeamMember: ({ teams, team, teamInputRef }) => () => {
+      teamInputRef.current.focus();
+
       if (!team)
         return;
 

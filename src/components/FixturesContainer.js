@@ -15,7 +15,7 @@ const FixturesContainer = ({ teams, fixtures, handleGenerateFixture, classes }) 
       Generar
     </Button>
 
-    <List>
+    <List className={classes.paddingRight}>
       {fixtures &&
         fixtures.map((fixtureRound, roundIndex) => (
           <div key={roundIndex} /* refactor: avoid using index for key*/ >
@@ -34,6 +34,9 @@ const styles = ({spacing}) => ({
   alignRight: { 
     float: 'right', 
     marginRight: spacing.unit 
+  },
+  paddingRight: {
+    paddingRight: spacing.unit * 2
   }
 });
 
