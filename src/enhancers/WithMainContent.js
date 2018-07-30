@@ -1,4 +1,4 @@
-import { withStateHandlers } from "recompose";
+import withStateHandlers from "recompose/withStateHandlers";
 import robin from 'roundrobin';
 
 export default withStateHandlers(

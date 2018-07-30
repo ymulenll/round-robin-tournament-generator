@@ -26,7 +26,7 @@ const MainContent = ({
         team={team}
         handleChangeTeamValue={handleChangeTeamValue}
         handleAddNewTeamMember={handleAddNewTeamMember}
-        canAggregateTeams={teams.length < 20} /*refactor*/ />
+        canAggregateTeams={teams.length < 20 && team} /* refactor to a method */ />
 
       <Divider />
 
@@ -56,7 +56,8 @@ const styles = ({spacing}) => ({
     padding: spacing.unit * 2
   },
   borderLeft: {
-    borderLeft: '1px solid grey'
+    borderLeft: '1px solid grey',
+    minHeight: 400
   },
   gridPadding: {
     padding: spacing.unit

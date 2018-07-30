@@ -7,7 +7,7 @@ const TeamList = ({ selectedTeamIndex, teams, handleDeleteTeam, handleChangeSele
   <div>
     <Typography variant="title" align="center">
       Teams&nbsp;&nbsp;
-        <IconButton disabled={selectedTeamIndex === null} onClick={handleDeleteTeam}>
+      <IconButton color="secondary" disabled={selectedTeamIndex === null} onClick={handleDeleteTeam}>
         <DeleteIcon />
       </IconButton>
     </Typography>
